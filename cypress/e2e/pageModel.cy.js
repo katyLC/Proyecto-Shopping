@@ -40,17 +40,24 @@ describe('Page objetc Model' ,()=> {
     })
 
     it("Agregar Productos", ()=> {
+       
         onlineShopPage.clickOnlineShop();
-       Productos.map(producto =>{
-        productsPage.agregarProductos(producto.nombre)
-       })
+       
+        productsPage.agregarProductos(Productos[0].nombre)
+        productsPage.agregarProductos(Productos[1].nombre)
         productsPage.clickShopingCard();
 
         // Productos.map(producto=>{
         //     shoppingCardPage.validarNombre(producto.nombre);
         // })
 
+        shoppingCardPage.returProducto().should('include.text', Productos[0].nombre )
+        shoppingCardPage.returProducto().should('include.text', Productos[1].nombre)
+        shoppingCardPage.returPrecio().should('include.text',Productos[0].precio)
+        shoppingCardPage.returPrecio().should('include.text', Productos[1].precio)
         shoppingCardPage.mostrarPreciototal();
+
+        shoppingCardPage.returPrecioTotal().should('include.text', Productos[0].precio + Productos[1].precio)
     })
 
     

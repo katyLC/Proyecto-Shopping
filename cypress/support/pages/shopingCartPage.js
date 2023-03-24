@@ -7,6 +7,14 @@ export class ShoppingCardPage{
             //this.showtotalPrice = "Show total price"
     }
 
+    returProducto() {
+    return cy.get('p#productName') 
+    }
+
+    returPrecio(){
+        return cy.get('p#productPrice')
+    }
+
     // validarNombre(nombre){
     //     cy.get(this.nombrelabel).invoke("text").then(texto=>{
     //         expect(texto).is.equal(nombre)
@@ -16,6 +24,10 @@ export class ShoppingCardPage{
     mostrarPreciototal (){
 
         cy.xpath("//button[text()='Show total price']").click();
+        
+    }
 
+    returPrecioTotal(){
+        return cy.get('#price')
     }
 }
